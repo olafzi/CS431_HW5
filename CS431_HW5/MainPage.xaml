@@ -9,10 +9,15 @@
     x:Class="CS431_HW5.MainPage">
 
 <StackLayout VerticalOptions="StartAndExpand" Padding="0,10,0,30">
-    <maps:Map HeightRequest="500"
+    <Picker
+        x:Name="PlacePicker"
+        Title="Pick the unique place!"
+        SelectedIndexChanged="OnPickerSelectedIndexChanged"></Picker>
+
+    <maps:Map HeightRequest="450"
             x:Name="MainMap"
             IsShowingUser="true" 
-            MapType="Hybrid"
+            MapType="Street"
     />
     <Button Text="Satellite"
             Clicked="SatelliteClicked"> </Button>
