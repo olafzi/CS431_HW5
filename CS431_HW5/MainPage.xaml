@@ -7,6 +7,22 @@
     xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
     mc:Ignorable="d"
     x:Class="CS431_HW5.MainPage">
-    <maps:Map x:Name="map" />
+
+<StackLayout VerticalOptions="StartAndExpand" Padding="0,10,0,30">
+    <maps:Map HeightRequest="500"
+            x:Name="MainMap"
+            IsShowingUser="true" 
+            MapType="Hybrid"
+    />
+    <Button Text="Satellite"
+            Clicked="SatelliteClicked"> </Button>
+
+    <Button Text="StreetView"
+            Clicked="StreetClicked"> </Button>
+            
+    <Button Text="Hybrid"
+            Clicked="HybridClicked"> </Button>
+
+</StackLayout>
 
 </ContentPage>

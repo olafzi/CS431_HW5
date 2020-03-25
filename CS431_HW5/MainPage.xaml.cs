@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+
 using Xamarin.Forms.Maps;
 
 namespace CS431_HW5
@@ -18,8 +19,24 @@ namespace CS431_HW5
         {
             InitializeComponent();
             Map map = new Map();
-            Content = map;
         }
-        
+
+        void SatelliteClicked(object sender, EventArgs args)
+        {
+            this.MainMap.MapType = MapType.Satellite;
+        }
+
+        void HybridClicked(object sender, EventArgs args)
+        {
+            this.MainMap.MapType = MapType.Hybrid;
+        }
+
+        void StreetClicked(object sender, EventArgs args)
+        {
+            this.MainMap.MapType = MapType.Street;
+        }
+
+
+
     }
 }
