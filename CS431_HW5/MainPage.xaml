@@ -1,4 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+CS481 HW5 - Maps and Pins Homework
+Mar 24, 2020
+Olaf Zielinski
+-->
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -8,26 +13,47 @@
     mc:Ignorable="d"
     x:Class="CS431_HW5.MainPage">
 
-<StackLayout VerticalOptions="StartAndExpand" Padding="0,10,0,30">
+<!--I decided to go with the Stack Layout.-->
+<StackLayout VerticalOptions="FillAndExpand" Padding="0,10,0,10">
+
+    <!--All of my homework includes this label at the top of the page.-->
+    <Label Margin="0,0,0,-15"
+           FontSize="10"
+           FontAttributes="Italic"
+           TextColor="Gray"
+           Text="Assignment 5 by Olaf Zielinski"
+           HorizontalTextAlignment="Center"
+           VerticalTextAlignment="Start"> </Label>
+
+    <!--Picker at the top of the page, initilized with a Title and including onChange handler-->
     <Picker
         x:Name="PlacePicker"
         Title="Pick the unique place!"
-        SelectedIndexChanged="OnPickerSelectedIndexChanged"></Picker>
+        SelectedIndexChanged="OnPickerSelectedIndexChanged"></Picker> 
 
-    <maps:Map HeightRequest="450"
-            x:Name="MainMap"
-            IsShowingUser="true" 
-            MapType="Street"
-    />
-    <Button Text="Satellite"
-            Clicked="SatelliteClicked"> </Button>
+    <!--Map is inside another StackLayout, to allow for other elements on the page-->
+    <StackLayout VerticalOptions="FillAndExpand">
 
-    <Button Text="StreetView"
-            Clicked="StreetClicked"> </Button>
+        <!--Instance of map, initilized to the Street MapType. Binded by name MainMap-->
+        <maps:Map
+                x:Name="MainMap"
+                IsShowingUser="true" 
+                MapType="Street"
+        />
+
+    </StackLayout>
+
+    <!--Three buttons alligned horizontally to change the viewtype of the map.-->
+    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+        <Button Text="Satellite"
+                Clicked="SatelliteClicked"> </Button>
+
+        <Button Text="StreetView"
+                Clicked="StreetClicked"> </Button>
             
-    <Button Text="Hybrid"
-            Clicked="HybridClicked"> </Button>
-
+        <Button Text="Hybrid"
+                Clicked="HybridClicked"> </Button>
+    </StackLayout>
 </StackLayout>
 
 </ContentPage>

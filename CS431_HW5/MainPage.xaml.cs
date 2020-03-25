@@ -11,8 +11,7 @@ using Xamarin.Forms.Maps;
 
 namespace CS431_HW5
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
+    
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
@@ -21,35 +20,40 @@ namespace CS431_HW5
         public MainPage()
         {
             InitializeComponent();
-            Map map = new Map();
-            var initialMapLocation = MapSpan.FromCenterAndRadius
-                                                (new Position(48.067687, 12.862049)
-                                                 , Distance.FromMiles(1));
+            Map map = new Map(); // Create a new Map instance
 
+
+            // Upon initialization, set the map location into a variable
+            var initialMapLocation = MapSpan.FromCenterAndRadius
+                                   (new Position(48.067687, 12.862049), Distance.FromMiles(1));
+            //and move the map to the location from the variable.
             MainMap.MoveToRegion(initialMapLocation);
 
+            //Upon initialiation, place all of the pins from PlaceSelection into the picker using function. 
             PlaceSelection();
         }
 
+        //There are three buttons to change the map style.
         private void SatelliteClicked(object sender, EventArgs args)
         {
-            this.MainMap.MapType = MapType.Satellite;
+            this.MainMap.MapType = MapType.Satellite; //Set to Satellite View 
         }
 
         private void HybridClicked(object sender, EventArgs args)
         {
-            this.MainMap.MapType = MapType.Hybrid;
-        }
+            this.MainMap.MapType = MapType.Hybrid; //Set to Hybrid View
+        } 
 
         private void StreetClicked(object sender, EventArgs args)
         {
-            this.MainMap.MapType = MapType.Street;
+            this.MainMap.MapType = MapType.Street; //Set to Street View
         }
 
+        //This function creates a new list of Pins and then adds those to the picker.
         private void PlaceSelection()
         {
 
-            pinNames = new ObservableCollection<Pin>
+            pinNames = new ObservableCollection<Pin> //Using the collection, as in the example code from lecture.
             {
                 new Pin
                 {
@@ -78,22 +82,24 @@ namespace CS431_HW5
                 }
             };
 
+
+            //For all the pins that are in the pinNames collection, 
             foreach (Pin item in pinNames)
             {
-                //Load each pin into the map and picker
+                //load each pin into the map and the picker
                 PlacePicker.Items.Add(item.Label);
                 MainMap.Pins.Add(item);
             }
 
-            //PlacePicker.SelectedIndex = 0;
+        } //End of the PlaceSelection
 
-
-        }
-
+        //This function handles the Picker Selected Index Changed event.
         private void OnPickerSelectedIndexChanged(object sender, System.EventArgs e)
         {
+
+            //it creates a variable with the item from the picker.
             var inputSlot = (Picker)sender;
-            string pname = inputSlot.SelectedItem.ToString();
+            string pname = inputSlot.SelectedItem.ToString(); //and creates a string with the name of the place
 
             //When user selects a pin name, find the pin
             foreach (Pin item in pinNames)
