@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace CS431_HW5
 {
@@ -16,6 +17,9 @@ namespace CS431_HW5
         public MainPage()
         {
             InitializeComponent();
+            Map map = new Map();
+            Content = map;
         }
+        
     }
 }
